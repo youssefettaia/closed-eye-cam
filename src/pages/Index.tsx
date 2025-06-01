@@ -1,12 +1,19 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import CameraInterface from '@/components/CameraInterface';
+import BackgroundRecordingService from '@/components/BackgroundRecordingService';
+import { useState } from 'react';
 
 const Index = () => {
+  const [isRecording, setIsRecording] = useState(false);
+  const [recordingState, setRecordingState] = useState({ isBackground: false, duration: 0 });
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-black">
+      <CameraInterface />
+      <BackgroundRecordingService 
+        isRecording={isRecording}
+        onRecordingStateChange={setRecordingState}
+      />
     </div>
   );
 };
